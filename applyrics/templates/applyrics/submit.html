@@ -1,0 +1,65 @@
+{% extends "applyrics/nav_footer.html" %}
+
+{% block title %} - Submitting{% endblock %}
+{% block content %}
+<div class="w3-container">
+    <div class="w3-content">
+        <div class="w3-one">
+            {% if who %}
+                <div class="w3-container w3-pale-green w3-margin w3-border-teal w3-leftbar">
+                    <h4>Thanks {{ who }} for submitting! I will notify you if it will be published.</h4>
+                </div>
+            {% endif %}
+            <h1>Lyrics Form</h1>
+            <p>You can help me by submitting song lyrics that are not
+                yet included in this site. Just make sure that each field contains valid
+                and correct data. Have fun!</p>
+        </div>
+        <form class="w3-container w3-padding w3-margin-bottom  w3-center"
+                  action="" method="post">
+            {% csrf_token %}
+            <input class="w3-margin-bottom w3-border-teal w3-hover-border-pink"
+                   placeholder="Your name" name="name"
+                   style="padding: 8px;
+                          display: block;
+                          border: none; background: lightgray;
+                          border-left: 1px solid #ccc;
+                          width: 100%" required/>
+            <input class="w3-margin-bottom w3-border-teal w3-hover-border-pink"
+                   placeholder="Your email" name="email" type="email"
+                   style="padding: 8px;
+                          display: block;
+                          border: none; background: lightgray;
+                          border-left: 1px solid #ccc;
+                          width: 100%" required/>
+            <input class="w3-margin-bottom w3-border-teal w3-hover-border-pink"
+                   placeholder="Song title" name="title"
+                   style="padding: 8px;
+                          display: block;
+                          border: none; background: lightgray;
+                          border-left: 1px solid #ccc;
+                          width: 100%" required/>
+            <input class="w3-margin-bottom w3-border-teal w3-hover-border-pink"
+                   placeholder="Writer/s" name="writer"
+                   style="padding: 8px;
+                          display: block;
+                          border: none; background: lightgray;
+                          border-left: 1px solid #ccc;
+                          width: 100%" required/>
+            <input class="w3-margin-bottom w3-border-teal w3-hover-border-pink"
+                   placeholder="Published date" name="date" type="date"
+                   style="padding: 8px;
+                          display: block;
+                          border: none; background: lightgray;
+                          border-left: 1px solid #ccc;
+                          width: 100%" required/>
+            <textarea name="lyrics" style="background:lightgray; height:300px;"
+                      placeholder="Lyrics..." required></textarea>
+            <div class="w3-cotainer w3-margin-top w3-center">
+                <button type="submit" class="w3-btn w3-padding w3-margin-bottom w3-teal
+                w3-hover-pink w3-round-xxlarge">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

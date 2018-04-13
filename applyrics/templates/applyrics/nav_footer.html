@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'applyrics/images/icon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'applyrics/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'applyrics/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'applyrics/main.css' %}">
+    <script rel="script" src="{% static 'applyrics/jquery.min.js' %}"></script>
+    <script rel="script" src="{% static 'applyrics/main.js' %}"></script>
+    <title>LyricsMan{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<nav class="w3-bar w3-teal w3-large">
+    <a href="/" class="w3-bar-item w3-button w3-hover-pink">
+        <img src="{% static 'applyrics/images/icon.png' %}" height="20" width="auto">
+        <span class="w3-hide-medium"><b>Lyrics Man</b></span>
+        <span class="w3-hide-large w3-hide-small"><b>LM</b></span></a>
+    <a href="/a#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">A</a>
+    <a href="/b#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">B</a>
+    <a href="/c#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">C</a>
+    <a href="/d#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">D</a>
+    <a href="/e#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">E</a>
+    <a href="/f#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">F</a>
+    <a href="/g#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">G</a>
+    <a href="/h#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">H</a>
+    <a href="/i#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">I</a>
+    <a href="/j#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">J</a>
+    <a href="/k#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">K</a>
+    <a href="/l#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">L</a>
+    <a href="/m#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">M</a>
+    <a href="/n#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">N</a>
+    <a href="/o#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">O</a>
+    <a href="/p#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">P</a>
+    <a href="/q#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">Q</a>
+    <a href="/r#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">R</a>
+    <a href="/s#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">S</a>
+    <a href="/t#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">T</a>
+    <a href="/u#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">U</a>
+    <a href="/v#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">V</a>
+    <a href="/w#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">W</a>
+    <a href="/x#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">X</a>
+    <a href="/y#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">Y</a>
+    <a href="/z#list" class="w3-bar-item w3-button w3-hide-small"
+       style="padding-left:4px; padding-right:4px;">Z</a>
+    <a id="bars" class="w3-bar-item w3-button w3-hide-large w3-hide-medium
+    w3-display-topright  w3-hover-pink"
+       onclick="$('#smallNav').slideToggle()">
+        <i class="fa fa-bars"></i></a>
+    <div id="smallNav" class="w3-bar w3-hide-large w3-hide-medium w3-light-grey" style="display:none">
+        <a href="/a#list" class="w3-bar-item w3-button w3-col s2 ">A</a>
+        <a href="/b#list" class="w3-bar-item w3-button w3-col s2 ">B</a>
+        <a href="/c#list" class="w3-bar-item w3-button w3-col s2 ">C</a>
+        <a href="/d#list" class="w3-bar-item w3-button w3-col s2 ">D</a>
+        <a href="/e#list" class="w3-bar-item w3-button w3-col s2 ">E</a>
+        <a href="/f#list" class="w3-bar-item w3-button w3-col s2 ">F</a>
+        <a href="/g#list" class="w3-bar-item w3-button w3-col s2 ">G</a>
+        <a href="/h#list" class="w3-bar-item w3-button w3-col s2 ">H</a>
+        <a href="/i#list" class="w3-bar-item w3-button w3-col s2 ">I</a>
+        <a href="/j#list" class="w3-bar-item w3-button w3-col s2 ">G</a>
+        <a href="/k#list" class="w3-bar-item w3-button w3-col s2 ">K</a>
+        <a href="/l#list" class="w3-bar-item w3-button w3-col s2 ">L</a>
+        <a href="/m#list" class="w3-bar-item w3-button w3-col s2 ">M</a>
+        <a href="/n#list" class="w3-bar-item w3-button w3-col s2 ">N</a>
+        <a href="/o#list" class="w3-bar-item w3-button w3-col s2 ">O</a>
+        <a href="/p#list" class="w3-bar-item w3-button w3-col s2 ">P</a>
+        <a href="/q#list" class="w3-bar-item w3-button w3-col s2 ">Q</a>
+        <a href="/r#list" class="w3-bar-item w3-button w3-col s2 ">R</a>
+        <a href="/s#list" class="w3-bar-item w3-button w3-col s2 ">S</a>
+        <a href="/t#list" class="w3-bar-item w3-button w3-col s2 ">T</a>
+        <a href="/u#list" class="w3-bar-item w3-button w3-col s2 ">U</a>
+        <a href="/v#list" class="w3-bar-item w3-button w3-col s2 ">V</a>
+        <a href="/w#list" class="w3-bar-item w3-button w3-col s2 ">W</a>
+        <a href="/x#list" class="w3-bar-item w3-button w3-col s2 ">X</a>
+        <a href="/y#list" class="w3-bar-item w3-button w3-col s2 ">Y</a>
+        <a href="/z#list" class="w3-bar-item w3-button w3-col s2 ">Z</a>
+    </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+<footer class="w3-container w3-teal w3-padding w3-center">
+    <p>This web application is developed by
+        <a href="https://denniel-sadian.github.io/" style="text-decoration:none"
+           class="w3-hover-blue w3-text-yellow">Denniel Luis S. Sadian</a>
+        on March 29, 2018. This is powered by django web framework.
+    </p>
+    <p>
+        2018 - {{ current_year }}
+    </p>
+    <p>
+        <a href="/admin/" style="text-decoration:none"
+           class="w3-button w3-round-xxlarge">
+            <img src="/static/applyrics/images/settings.png"
+                 class="w3-image" width="20"/> Manage</a>
+    </p>
+</footer>
+
+</body>
+</html>

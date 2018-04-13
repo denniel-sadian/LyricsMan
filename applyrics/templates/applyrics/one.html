@@ -1,0 +1,57 @@
+{% extends "applyrics/nav_footer.html" %}
+
+{% block title %} - {{ lyrics.title|title }}{% endblock %}
+{% block content %}
+<div class="w3-container">
+    <div class="w3-content">
+        {% if who_corrected %}
+        <div class="w3-container w3-blue w3-margin">
+            <h4>Thanks {{ who_corrected }} for submitting a correction.</h4>
+        </div>
+        {% endif %}
+        <div class="w3-one w3-center">
+            <h1 id="song_title">"{{ lyrics.title|title }}"</h1>
+            <p id="lyrics">{{ lyrics.safe_text }}</p>
+        </div>
+        <div class="w3-container w3-center w3-padding w3-text-teal">
+            <p class="w3-border-bottom w3-border-teal">
+                <b id="writers">
+                    Written by {{ lyrics.written_by }}
+                </b>
+            </p>
+            <p>{{ lyrics.remarks }}</p>
+        </div>
+    </div>
+</div>
+<div class="w3-container w3-padding w3-center" style="margin:0px 0px 50px 0px">
+    <button id="submit_correction" class="w3-button w3-round-xxlarge w3-teal w3-hover-pink">
+        Submit correction</button>
+</div>
+<div id="correctModal" class="w3-modal">
+	<div class="w3-modal-content">
+        <div class="w3-container w3-padding w3-teal">
+			<span class="closebtn w3-hover-text-red"
+                  onclick="$('#correctModal').slideUp()">&times;</span>
+			<h2>Correction</h2>
+		</div>
+        <div class="w3-container">
+            <form class="w3-container w3-padding w3-margin-bottom  w3-center"
+                  action="" method="post">
+                {% csrf_token %}
+                <input class="w3-margin-bottom w3-border-teal w3-hover-border-pink"
+                       placeholder="Your name" name="name"
+                       style="padding: 8px;
+                              display: block;
+                              border: none;
+                              border-left: 1px solid #ccc;
+                              width: 100%" required/>
+                <textarea name="correction" id="correct"
+                          placeholder="Correction..." required></textarea>
+                <div class="w3-cotainer w3-margin-top w3-right">
+                    <button type="submit" class="w3-btn w3-padding w3-round-xxlarge w3-teal w3-hover-pink">Submit</button>
+                </div>
+            </form>
+        </div>
+	</div>
+</div>
+{% endblock %}

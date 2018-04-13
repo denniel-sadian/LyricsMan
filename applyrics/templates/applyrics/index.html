@@ -1,0 +1,71 @@
+{% extends "applyrics/nav_footer.html" %}
+
+{% block title %} - {{ letter|title }}{% endblock %}
+{% block content %}
+<header id="head" class="w3-container w3-gray w3-center">
+	<h1 class="top">Welcome to Lyrics Man</h1>
+    <div class="w3-container">
+        <div class="w3-content">
+            <div class="w3-one">
+                <form action="{% url 'applyrics:index' %}#list" method="get">
+                    {% csrf_token %}
+                    <input name="q" type="text" class="search w3-padding w3-center"
+                           placeholder="Title, Artist or Lyrics" value="{{ searched }}" required/>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="list" class="w3-container w3-padding w3-margin">
+    <div class="w3-content">
+        <div class="w3-one">
+            <ul class="w3-ul w3-hoverable">
+                {% if lyrics %}
+                    <li class="w3-teal"><h1>{{ letter|title }} - {{ how_many }}</h1></li>
+                    {% for i in lyrics %}
+                        <li class="item" style="padding-top:0px; padding-bottom:0px">
+                            <h3 style="margin:0px" class="head">
+                                <a style="text-decoration:none" href="{% url 'applyrics:index' %}{{ i.title.0 }}/{{ i.pk }}"
+                                   class="w3-hover-text-pink w3-text-teal">{{ i.title }}</a>
+                            </h3>
+                            <p style="margin:0px 0px 10px 0px">- {{ i.written_by }} - {{ i.pub_date }}</p>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="w3-pink w3-center"><h3>Sorry, no lyrics found</h3></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% if lyrics and letter != 'Latest' %}
+<div class="w3-center">
+    <span class="step-links">
+        {% if lyrics.has_previous %}
+        <a href="?page=1&q={{ searched }}#list" style="text-decoration:none"
+           class="w3-button w3-gray w3-hover-teal w3-round-xxlarge">&laquo; first</a>
+        <a href="?page={{ lyrics.previous_page_number }}&q={{ searched }}#list" style="text-decoration:none"
+           class="w3-button w3-gray w3-hover-teal w3-round-xxlarge">&laquo;</a>
+        {% endif %}
+        <span class="current">
+            {{ lyrics.number }} of {{ lyrics.paginator.num_pages }}
+        </span>
+        {% if lyrics.has_next %}
+        <a href="?page={{ lyrics.next_page_number }}&q={{ searched }}#list" style="text-decoration:none"
+           class="w3-button w3-gray w3-hover-teal w3-round-xxlarge">&raquo;</a>
+        <a href="?page={{ lyrics.paginator.num_pages }}&q={{ searched }}#list" style="text-decoration:none"
+           class="w3-button w3-gray w3-hover-teal w3-round-xxlarge">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+
+<div class="w3-container w3-margin w3-padding">
+    <div class="w3-cotainer w3-center">
+        <a href="{% url 'applyrics:index' %}submit/" class="w3-btn w3-padding w3-teal
+        w3-hover-pink w3-round-xxlarge">Submit a Song Lyrics</a>
+    </div>
+</div>
+{% endblock %}
