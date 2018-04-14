@@ -1,2 +1,2 @@
 # LyricsMan
-Django web project that gives your favorite lyrics.
+Django2 web project that gives your favorite lyrics.
