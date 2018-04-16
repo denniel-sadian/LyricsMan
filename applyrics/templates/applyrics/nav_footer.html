@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{% static 'applyrics/images/icon.png' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'applyrics/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'applyrics/w3.css' %}">
     <link rel="stylesheet" href="{% static 'applyrics/main.css' %}">
     <script rel="script" src="{% static 'applyrics/jquery.min.js' %}"></script>
@@ -17,8 +17,8 @@
 <nav class="w3-bar w3-teal w3-large">
     <a href="/" class="w3-bar-item w3-button w3-hover-pink">
         <img src="{% static 'applyrics/images/icon.png' %}" height="20" width="auto">
-        <span class="w3-hide-medium"><b>Lyrics Man</b></span>
-        <span class="w3-hide-large w3-hide-small"><b>LM</b></span></a>
+        <span class="w3-hide-medium be-hidden"><b>Lyrics Man</b></span>
+        <span class="w3-hide-large w3-hide-small be-hidden"><b>LM</b></span></a>
     <a href="/a#list" class="w3-bar-item w3-button w3-hide-small"
        style="padding-left:4px; padding-right:4px;">A</a>
     <a href="/b#list" class="w3-bar-item w3-button w3-hide-small"
@@ -72,9 +72,20 @@
     <a href="/z#list" class="w3-bar-item w3-button w3-hide-small"
        style="padding-left:4px; padding-right:4px;">Z</a>
     <a id="bars" class="w3-bar-item w3-button w3-hide-large w3-hide-medium
-    w3-display-topright  w3-hover-pink"
+    w3-hover-pink" style="float:right"
        onclick="$('#smallNav').slideToggle()">
-        <i class="fa fa-bars"></i></a>
+        <i class="fa fa-bars"></i>
+    </a>
+    <div class="w3-bar-item w3-button" style="float:right"
+         onclick="$('#searchBox').slideToggle()">
+        <i class="fa fa-search"></i>
+    </div>
+    <form action="{% url 'applyrics:index' %}#list" method="get" id="searchBox"
+          class="w3-bar-item w3-mobile w3-animate-right" style="float:right; padding:0px; display:none">
+            {% csrf_token %}
+            <input name="q" type="text" class="w3-input"
+                   style="border:none; float:right" placeholder="Search..." required/>
+    </form>
     <div id="smallNav" class="w3-bar w3-hide-large w3-hide-medium w3-light-grey" style="display:none">
         <a href="/a#list" class="w3-bar-item w3-button w3-col s2 ">A</a>
         <a href="/b#list" class="w3-bar-item w3-button w3-col s2 ">B</a>
