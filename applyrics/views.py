@@ -22,7 +22,6 @@ def index(request):
             context['lyrics'] = lyrics_
             context['letter'] = 'Found'
             context['how_many'] = len(final_found)
-            context['searched'] = search
         else:
             latest = Lyrics.objects.order_by('-pub_date')[:15]
             context['lyrics'] = latest
